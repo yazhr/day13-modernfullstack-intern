@@ -10,13 +10,11 @@ const handler = NextAuth({
     ],
     callbacks: {
         async signIn({ user, account, profile }) {
-            // You can add custom logic here if needed
             return true;
         },
         async redirect({ url, baseUrl }) {
-            // Redirect to GitHub profile page after sign-in
+
             if (url.startsWith(baseUrl)) {
-                // If the URL is for redirecting after signing in, go to GitHub profile
                 return 'https://github.com/' + (url.includes('?') ? url.split('?')[1].split('=')[1] : '');
             }
             return baseUrl;
