@@ -2,6 +2,7 @@
 
 import { useSession } from 'next-auth/react';
 import { ProtectedRoute } from '@/component/ProtectedRoute';
+import Image from 'next/image';
 import styles from './styles/home.module.css';
 
 export default function Home() {
@@ -16,10 +17,12 @@ export default function Home() {
           {session && (
             <div className={styles.userInfo}>
               {session.user?.image && (
-                <img 
+                <Image 
                   src={session.user.image} 
                   alt="Profile" 
-                  className={styles.avatar} 
+                  className={styles.avatar}
+                  width={60}
+                  height={60}
                 />
               )}
               <div>
@@ -30,7 +33,7 @@ export default function Home() {
           )}
           
           <p className={styles.welcomeMessage}>
-            This is a protected page. You can only see this content if you're logged in.
+            This is a protected page. You can only see this content if you&apos;re logged in.
             The navbar above includes a sign-out button that will log you out and redirect you to the login page.
           </p>
         </div>
